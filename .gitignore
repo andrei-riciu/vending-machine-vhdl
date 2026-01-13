@@ -1,0 +1,75 @@
+# Vivado project files
+proj/
+*.xpr
+*.xpf
+*.xdc
+*.runs/
+*.cache/
+*.hw/
+*.ip_user_files/
+*.sim/
+
+# Vivado logs and journals
+*.log
+*.jou
+*.pb
+*.wdb
+*.debug
+
+# Xilinx temporary files
+.Xil/
+*.os
+*.hw
+*.bit
+*.ltx
+*.rpt
+
+# Vivado backup files
+*.backup.log
+*.backup.jou
+
+# Synthesis and implementation files
+*.dcp
+*.edf
+*.ngc
+*.ngd
+*.bld
+*.bgn
+*.bit
+*.bin
+*.mcs
+
+# Simulation files
+*.vcd
+*.saif
+*.tcl~
+*.fdo
+*.fdb_latexmk
+*.fls
+*.auxlock
+
+# Custom log directory (if using Option 1 from previous answer)
+logs/
+vivado_files/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Editor files
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# Compiled files
+*.o
+*.so
+*.dll
+*.exe
