@@ -1,0 +1,57 @@
+# SBT specific
+target/
+project/target/
+project/project/
+lib_managed/
+src_managed/
+test-output/
+*.class
+*.log
+
+# Scala-IDE specific
+.scala_dependencies
+.worksheet
+.cache
+.cache-main
+.cache-tests
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.ipr
+*.iws
+out/
+
+# Eclipse
+.project
+.classpath
+.settings/
+bin/
+
+# VS Code
+.vscode/
+.metals/
+.bloop/
+.bsp/
+
+# Mac
+.DS_Store
+
+# Chisel/FIRRTL specific
+test_run_dir/
+*.fir
+*.v
+*.anno.json
+*.pb
+
+# Generated Verilog/VHDL (if you want to track these, remove these lines)
+# *.v
+# *.vhd
+
+# Verilator
+*.vcd
+*.fst
+
+# Mill
+.mill-version
+mill-launcher.jar
