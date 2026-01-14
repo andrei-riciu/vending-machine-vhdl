@@ -21,8 +21,7 @@ architecture tb of vending_machine_tb is
     constant clk_period : time := 10 ns;
 
 begin
-    -- instantiate DUT
-    DUT: entity work.vending_machine
+    vending: entity work.vending_machine
         port map(
             clk => clk,
             rst_n => rst_n,
@@ -36,8 +35,7 @@ begin
             change_type => change_type,
             coin_reject => coin_reject
         );
-
-    -- clock
+        
     clk_proc: process
     begin
         while now < 2000 ns loop
@@ -55,8 +53,10 @@ begin
         wait for 25 ns;
         rst_n <= '1';
 
+        -- Sync to falling edge to avoid race conditions
+        wait until falling_edge(clk);
+
         -- Pune 1 leu + 50b
-        wait for 20 ns;
         coin_in <= "010"; coin_valid <= '1';
         wait for clk_period;
         coin_in <= "001"; coin_valid <= '1'; -- 50b
@@ -69,12 +69,14 @@ begin
         wait for clk_period;
         req_disp <= '0';
 
+        wait for 20 ns;
         rst_n <= '0';
         wait for 25 ns;
         rst_n <= '1';
+        
+        wait until falling_edge(clk);
 
         -- Pune 5 lei
-        wait for 20 ns;
         coin_in <= "100"; coin_valid <= '1'; -- 5 lei
         wait for clk_period;
         coin_valid <= '0'; coin_in <= "000";
@@ -91,9 +93,12 @@ begin
         wait for 100 ns; -- Asteapta mai multe cicluri pentru rest
         req_change <= '0';
 
+        wait for 20 ns;
         rst_n <= '0';
         wait for 25 ns;
         rst_n <= '1';
+        
+        wait until falling_edge(clk);
 
         -- Incearca sa depaseasca suma maxima
         wait for clk_period;

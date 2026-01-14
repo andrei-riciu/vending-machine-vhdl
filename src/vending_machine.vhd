@@ -55,7 +55,6 @@ begin
     change_type   <= change_type_reg;
     coin_reject   <= coin_reject_reg;
 
-    -- Synchronous Process: Update State and Registers
     process(clk, rst_n)
     begin
         if rst_n = '0' then
@@ -75,12 +74,10 @@ begin
         end if;
     end process;
 
-    -- Combinational Process: Next State Logic
     process(current_state, amount, coin_in, coin_valid, prod_sel, req_disp, req_change)
         variable coin_value : integer;
         variable selected_price : integer;
     begin
-        -- Default assignments
         next_state <= current_state;
         next_amount <= amount;
         next_dispense <= "00";
@@ -88,7 +85,6 @@ begin
         next_change_type <= "00";
         next_coin_reject <= '0';
 
-        -- Variable logic
         coin_value := 0;
         if coin_valid = '1' then
             if coin_in = "001" then
